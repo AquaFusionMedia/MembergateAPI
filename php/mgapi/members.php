@@ -49,8 +49,19 @@
             return $this->makeRequest("POST",$this->component,"addEditMember",$qString,$postData);
         }
 
+        /* Update Member Email */
+        function updateMemberEmail($memberuuid,$email) {
+            $qString = array(
+                "memberuuid" => $memberuuid
+            );
+            $postData = array(
+                "email" => $email
+            );
+            return $this->makeRequest("PATCH",$this->component,"updateMemberEmail",$qString,$postData);
+        }
+
         /* Validate Login */
-        function validateLogin($userid,$password) {
+        function validateMemberLogin($userid,$password) {
             $qString = array();
             $postData = array(
                 "userid" => $userid,
@@ -60,7 +71,7 @@
         }
 
         /* Validate Token */
-        function validateToken($member_number,$userid,$token) {
+        function validateMemberToken($member_number,$userid,$token) {
             $qString = array();
             $postData = array(
                 "member_number" => $member_number,
