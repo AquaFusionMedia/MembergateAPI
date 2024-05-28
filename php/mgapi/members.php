@@ -49,6 +49,32 @@
             return $this->makeRequest("POST",$this->component,"addEditMember",$qString,$postData);
         }
 
+        /* Update Member UserID */
+        function updateMember(
+            $memberuuid,
+            $first_name=null, $last_name=null, $email=null, $userid=null, $company=null, $member_job_title=null, $address=null, $address2=null, $city=null, $state=null, $provincee=null, $postal_code=null, $country=null, $work_phone=null) {
+            foreach (get_defined_vars() as $key => $value) {
+                if ($key != 'memberuuid' && $value != NULL) {
+                    $postData[$key] = $value;
+                }
+            }
+            $qString = array(
+                "memberuuid" => $memberuuid
+            );
+            return $this->makeRequest("PATCH",$this->component,"updateMember",$qString,$postData);
+        }
+
+        /* Update Member UserID */
+        function updateMemberUserID($memberuuid,$userid) {
+            $qString = array(
+                "memberuuid" => $memberuuid
+            );
+            $postData = array(
+                "userid" => $userid
+            );
+            return $this->makeRequest("PATCH",$this->component,"updateMemberUserID",$qString,$postData);
+        }
+
         /* Update Member Email */
         function updateMemberEmail($memberuuid,$email) {
             $qString = array(
