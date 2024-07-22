@@ -87,22 +87,24 @@
         }
 
         /* Validate Login */
-        function validateMemberLogin($userid,$password) {
+        function validateMemberLogin($userid,$password,$recordlogin) {
             $qString = array();
             $postData = array(
                 "userid" => $userid,
-                "password" => $password
+                "password" => $password,
+				"recordlogin" => $recordlogin
             );
             return $this->makeRequest("POST",$this->component,"ValidateMemberLogin",$qString,$postData);
         }
 
         /* Validate Token */
-        function validateMemberToken($member_number,$userid,$token) {
+        function validateMemberToken($member_number,$userid,$token,$recordlogin) {
             $qString = array();
             $postData = array(
                 "member_number" => $member_number,
                 "userid" => $userid,
-                "token" => $token
+                "token" => $token,
+				"recordlogin" => $recordlogin
             );
             return $this->makeRequest("POST",$this->component,"validateMemberToken",$qString,$postData);
         }
